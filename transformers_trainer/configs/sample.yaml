@@ -1,6 +1,3 @@
-experiment:
-  name: whisper-finetune-multiple-datasets
-
 data:
   common_voice:
     dataset_name: "cowcheng/mozilla_foundation_common_voice_corpus_20_0"
