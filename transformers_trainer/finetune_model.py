@@ -152,6 +152,6 @@ def train(
 
 if __name__ == "__main__":
     args = parse_args()
-    configs_dict = read_yaml(yaml_path=args.config_path)
+    configs_dict = read_yaml(yaml_path=args.configs_path)
     configs = TransformersTrainerConfigs(**configs_dict)
     train(configs=configs)

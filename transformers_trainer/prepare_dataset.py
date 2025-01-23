@@ -16,7 +16,7 @@ from utils import parse_args, read_yaml
 # -----------------------------
 
 args = parse_args()
-configs_dict = read_yaml(yaml_path=args.config_path)
+configs_dict = read_yaml(yaml_path=args.configs_path)
 configs = TransformersTrainerConfigs(**configs_dict)
 print(f"Configs: {configs}")
 

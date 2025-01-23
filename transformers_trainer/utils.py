@@ -28,7 +28,7 @@ def parse_args() -> Namespace:
     """
     parser = ArgumentParser()
     parser.add_argument(
-        "--config_path",
+        "--configs_path",
         type=Path,
         required=True,
         help="Path to the YAML configuration file for fine-tuning the Whisper model",
