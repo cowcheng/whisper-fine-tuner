@@ -5,8 +5,8 @@ import evaluate
 from evaluate import EvaluationModule
 from transformers import WhisperTokenizerFast
 
-# Load the Word Error Rate (WER) metric from the `evaluate` library
-metric: EvaluationModule = evaluate.load(path="wer")
+# Load the Character Error Rate (CER) metric from the `evaluate` library
+metric: EvaluationModule = evaluate.load(path="cer")
 
 
 @dataclass
@@ -15,7 +15,7 @@ class Evaluator:
     Evaluator for computing metrics on speech recognition model predictions.
 
     This class utilizes the WhisperTokenizerFast to decode predicted and label token IDs
-    into strings and computes the Word Error Rate (WER) between them using the `evaluate` library.
+    into strings and computes the Character Error Rate (CER) between them using the `evaluate` library.
 
     Attributes:
         tokenizer (WhisperTokenizerFast): The tokenizer used to decode token IDs into text.
@@ -31,7 +31,7 @@ class Evaluator:
         Computes evaluation metrics for model predictions.
 
         Specifically, this method decodes the predicted and label token IDs into strings,
-        replaces padding tokens in labels, and calculates the Word Error Rate (WER) between
+        replaces padding tokens in labels, and calculates the Character Error Rate (CER) between
         the predictions and references.
 
         Args:
@@ -42,7 +42,7 @@ class Evaluator:
 
         Returns:
             Dict[str, float]: A dictionary with the computed metrics. Currently, it includes:
-                - "wer": The Word Error Rate as a percentage.
+                - "cer": The Character Error Rate as a percentage.
         """
         pred_ids = pred.predictions
         label_ids = pred.label_ids
@@ -58,9 +58,9 @@ class Evaluator:
             skip_special_tokens=True,
         )
 
-        wer = 100 * metric.compute(
+        cer = 100 * metric.compute(
             predictions=pred_str,
             references=label_str,
         )
 
-        return {"wer": wer}
+        return {"cer": cer}

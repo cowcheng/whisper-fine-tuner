@@ -67,7 +67,7 @@ def train(
         eval_steps=configs.trainer.eval_steps,
         dataloader_num_workers=NUM_WORKERS,
         load_best_model_at_end=True,
-        metric_for_best_model="wer",
+        metric_for_best_model="cer",
         greater_is_better=False,
         report_to=["tensorboard"],
         gradient_checkpointing=configs.trainer.gradient_checkpointing,
