@@ -1,6 +1,11 @@
 import os
 
 import torch
+from configs import TransformersTrainerConfigs
+from data_collector import DataCollatorSpeechSeq2SeqWithPadding
+from data_loader import DataLoader
+from evaluator import Evaluator
+from system import NUM_GPUS, NUM_WORKERS
 from transformers import (
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
@@ -9,20 +14,7 @@ from transformers import (
     WhisperProcessor,
     WhisperTokenizerFast,
 )
-
-from configs import TransformersTrainerConfigs
-from data_collector import DataCollatorSpeechSeq2SeqWithPadding
-from data_loader import DataLoader
-from evaluator import Evaluator
-from system import NUM_WORKERS
 from utils import logger, parse_args, read_yaml
-
-# TODO: Fix later
-# Disable the warning messages from the Transformers library
-os.environ['TRANSFORMERS_NO_ADVISORY_WARNINGS'] = 'true'
-
-# Enable TensorFloat-32 for matrix multiplications on CUDA
-torch.backends.cuda.matmul.allow_tf32 = True
 
 
 def train(
@@ -63,7 +55,7 @@ def train(
         fp16=True if configs.trainer.precision == "fp16" else False,
         bf16_full_eval=True if configs.trainer.precision == "bf16" else False,
         fp16_full_eval=True if configs.trainer.precision == "fp16" else False,
-        ddp_backend="nccl" if torch.cuda.device_count() > 1 else None,
+        ddp_backend="nccl" if NUM_GPUS > 1 else None,
         eval_steps=configs.trainer.eval_steps,
         dataloader_num_workers=NUM_WORKERS,
         load_best_model_at_end=True,

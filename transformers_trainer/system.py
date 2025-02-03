@@ -1,5 +1,19 @@
 import os
 
+import torch
+
+# Temporarily disable advisory warnings from the Transformers library.
+# TODO: Revisit and properly handle warnings in the future.
+os.environ['TRANSFORMERS_NO_ADVISORY_WARNINGS'] = 'true'
+
+# Enable TensorFloat-32 (TF32) mode for CUDA matrix multiplications.
+# TF32 can provide a good balance between performance and precision on compatible hardware.
+torch.backends.cuda.matmul.allow_tf32 = True
+
+# Retrieve the number of GPUs available on the current machine.
+# This is useful for parallelizing computations across multiple devices.
+NUM_GPUS = torch.cuda.device_count()
+
 # Determines the number of worker processes to use for data loading.
 # It takes half of the available CPU cores but caps the number at 16 to prevent excessive resource usage.
 # This helps in optimizing data loading performance without overwhelming the system.
