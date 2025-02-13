@@ -1,0 +1,22 @@
+evaluator:
+  model_path: "./models/whisper-tiny"
+  precision: "bf16"
+
+datasets:
+  common_voice:
+    dataset_name: "cowcheng/google_fleurs"
+    subsets:
+      cantonese:
+        name: "cantonese"
+        split: "data"
+        num_rows: 100
+      english:
+        name: "english"
+        split: "data"
+        num_rows: 100
+      mandarin:
+        name: "mandarin"
+        split: "data"
+        num_rows: 100
+    audio_column: "audio"
+    transcription_column: "raw_transcription"
