@@ -1,7 +1,6 @@
 import time
 from pathlib import Path
 
-import torch
 from faster_whisper import WhisperModel
 
 from utils import logger, parse_inference_args
@@ -18,8 +17,6 @@ def inference(
         model_path (str): Path to the Whisper model or Hugging Face model ID.
         input_audio_path (Path): Path to the input audio file for transcription.
     """
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
     logger.info(msg=f"Model path: {model_path}")
     logger.info(msg=f"Input audio path: {input_audio_path}")
 
