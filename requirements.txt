@@ -9,3 +9,6 @@ datasets[audio]==3.2.0
 tensorboard==2.19.0
 evaluate==0.4.3
 jiwer==3.1.0
+ctranslate2==4.5.0
+faster-whisper @ https://github.com/SYSTRAN/faster-whisper/archive/refs/heads/master.tar.gz
+onnxruntime-gpu==1.20.1
