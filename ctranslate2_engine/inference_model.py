@@ -35,8 +35,6 @@ def inference(
     for segment in segments:
         logger.info(msg=f"[{segment.start:.2f} -> {segment.end:.2f}] {segment.text}")
 
-    logger.info(msg=f"\n{torch.cuda.memory_summary(device=device)}")
-
 
 if __name__ == "__main__":
     args = parse_inference_args()
