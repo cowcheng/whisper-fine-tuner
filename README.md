@@ -74,6 +74,10 @@ For details on using the Transformers Trainer, refer to the [Transformers Traine
 
 ## 🚀 Inference Engine
 
+### 🚀 CTranslate2 Engine
+
+For details on using the CTranslate2 Engine, refer to the [CTranslate2 Engine](./ctranslate2_engine/).
+
 ### _Upcoming enhancements will include more inference acceleration techniques for improved efficiency._
 
 ## 🌱 Contributing
