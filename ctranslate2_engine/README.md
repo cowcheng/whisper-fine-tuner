@@ -13,8 +13,6 @@ CTranslate2 is a high-performance inference engine optimized for neural machine 
 
 ### 🔄 Converting a Model to CTranslate2 Format
 
-Use the following command to convert a Transformers model into the CTranslate2 format:
-
 ```bash
 ct2-transformers-converter --model {huggingface_repository_id,model_path} \
     --output_dir {output_directory_path} \
@@ -30,8 +28,6 @@ ct2-transformers-converter --model "cowcheng/whisper-tiny" \
 
 ### 🎙️ Running Inference
 
-Run inference on an audio file using the converted model:
-
 ```bash
 python inference_model.py --model {model_dir} --input {input_audio}
 
@@ -40,8 +36,6 @@ python inference_model.py --model ./faster-whisper-tiny --input ./sample.wav
 ```
 
 ### ☁️ Uploading a Model to Hugging Face
-
-Upload the converted model to Hugging Face:
 
 ```bash
 python push_model.py --model {model_dir} --repo_id {hf_repo_id} --commit "{commit_message}" [--private]
